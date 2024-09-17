@@ -5,11 +5,15 @@
 # @File    : generate_mt_bench_judgment.py
 
 """
-Modified from: https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/gen_judgment.py
+This file may have been modified by Bytedance Ltd. and/or its affiliates (“Bytedance's Modifications”).
+All Bytedance's Modifications are Copyright (year) Bytedance Ltd. and/or its affiliates.
+
+Reference: https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/gen_judgment.py
 
 Usage:
-python gen_judgment.py --model-list [LIST-OF-MODEL-ID] --parallel [num-concurrent-api-call] --mode [single|pairwise-baseline|pairwise-all]
+python generate_mt_bench_judgment.py --model-list [LIST-OF-MODEL-ID] --parallel [num-concurrent-api-call] --mode [single|pairwise-baseline|pairwise-all]
 """
+
 import argparse
 import json
 import os.path

@@ -4,6 +4,16 @@
 # @Project : AIPO
 # @File    : customized_dpo_trainer.py
 
+
+"""
+This file may have been modified by Bytedance Ltd. and/or its affiliates (“Bytedance's Modifications”).
+All Bytedance's Modifications are Copyright (year) Bytedance Ltd. and/or its affiliates.
+
+Reference: https://github.com/huggingface/trl/blob/v0.9.3/trl/trainer/dpo_trainer.py
+
+This implementation is originally based on trl==0.9.3, may not compatible with other versions.
+"""
+
 import logging
 from dataclasses import dataclass
 from typing import Dict, Union, Literal, List, Tuple, Optional
@@ -15,9 +25,7 @@ from trl import DPOTrainer, DPOConfig
 
 logger = logging.getLogger(__name__)
 
-"""
-This implementation is originally based on trl==0.9.3, may not compatible with other versions.
-"""
+
 
 
 @dataclass

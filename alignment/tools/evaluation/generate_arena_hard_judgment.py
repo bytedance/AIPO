@@ -4,6 +4,13 @@
 # @Project : AIPO
 # @File    : generate_arena_hard_judgment.py
 
+"""
+This file may have been modified by Bytedance Ltd. and/or its affiliates (“Bytedance's Modifications”).
+All Bytedance's Modifications are Copyright (year) Bytedance Ltd. and/or its affiliates.
+
+Reference: https://github.com/lm-sys/arena-hard-auto/blob/main/gen_judgment.py
+"""
+
 import argparse
 import concurrent.futures
 import json

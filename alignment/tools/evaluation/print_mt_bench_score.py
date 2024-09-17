@@ -5,6 +5,11 @@
 # @File    : print_mt_bench_score.py
 
 """
+This file may have been modified by Bytedance Ltd. and/or its affiliates (“Bytedance's Modifications”).
+All Bytedance's Modifications are Copyright (year) Bytedance Ltd. and/or its affiliates.
+
+Reference: https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/show_result.py
+
 Usage:
 python3 show_result.py --mode [single|pairwise-baseline|pairwise-all]
 """

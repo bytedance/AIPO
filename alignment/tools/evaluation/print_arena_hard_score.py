@@ -4,6 +4,14 @@
 # @Project : AIPO
 # @File    : print_arena_hard_score.py
 
+
+"""
+This file may have been modified by Bytedance Ltd. and/or its affiliates (“Bytedance's Modifications”).
+All Bytedance's Modifications are Copyright (year) Bytedance Ltd. and/or its affiliates.
+
+Reference: https://github.com/lm-sys/arena-hard-auto/blob/main/show_result.py
+"""
+
 import argparse
 import datetime
 import inspect

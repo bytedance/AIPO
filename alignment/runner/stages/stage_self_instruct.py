@@ -5,8 +5,10 @@
 # @File    : ${FILE_NAME}
 
 """
-Self Instruct Creation.
-https://aclanthology.org/2023.acl-long.754/
+This file may have been modified by Bytedance Ltd. and/or its affiliates (“Bytedance's Modifications”).
+All Bytedance's Modifications are Copyright (year) Bytedance Ltd. and/or its affiliates.
+
+Reference: https://github.com/yizhongw/self-instruct/tree/0b26ccaa415992100fa32df62d41b994cf928e23/self_instruct
 """
 
 import itertools

@@ -4,8 +4,12 @@
 # @Project : AIPO
 # @File    : generate_mt_bench_output.py
 
+
 """
-Modified from https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/gen_model_answer.py
+This file may have been modified by Bytedance Ltd. and/or its affiliates (“Bytedance's Modifications”).
+All Bytedance's Modifications are Copyright (year) Bytedance Ltd. and/or its affiliates.
+
+Reference: https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/gen_model_answer.py
 
 Generate answers with local models.
 

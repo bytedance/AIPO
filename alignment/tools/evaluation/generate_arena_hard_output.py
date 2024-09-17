@@ -4,7 +4,13 @@
 # @Project : AIPO
 # @File    : generate_arena_hard_output.py
 
-"""Generate answers using api endpoints.
+"""
+This file may have been modified by Bytedance Ltd. and/or its affiliates (“Bytedance's Modifications”).
+All Bytedance's Modifications are Copyright (year) Bytedance Ltd. and/or its affiliates.
+
+Reference: https://github.com/lm-sys/arena-hard-auto/blob/main/gen_answer.py
+
+Generate answers using api endpoints.
 
 Usage:
 python gen_api_answer --parallel 32

@@ -1,7 +1,7 @@
 # AIPO: Improving Training Objective for Iterative Preference Optimization
 
 ✨This repository contains the code and models for our
-paper [AIPO: Improving Training Objective for Iterative Preference Optimization](https://).
+paper [AIPO: Improving Training Objective for Iterative Preference Optimization](https://arxiv.org/abs/2409.08845).
 
 ## News
 
@@ -109,8 +109,8 @@ We also provide our modified scripts for generating model output for evaluation 
 ```text
 @article{
     title={{AIPO}: Improving Training Objective for Iterative Preference Optimization},
-    author={},
-    journal={},
+    author={Yaojie Shen and Xinyao Wang and Yulei Niu and Ying Zhou and Lexin Tang and Libo Zhang and Fan Chen and Longyin Wen},
+    journal={arXiv preprint arXiv:2409.08845},
     year={2024}
 }
 ```

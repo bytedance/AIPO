@@ -1,0 +1,66 @@
+# @package _global_
+
+defaults:
+  - /experiments/stages/base
+  - /mm_video_distributed_log
+  - /runner: DPOStage
+  - override /hydra/launcher: torchrun
+
+hydra:
+  launcher:
+    nproc_per_node: "${dist.nproc_per_node:}"
+    nnodes: "${dist.nnodes:}"
+    node_rank: "${dist.node_rank:}"
+    master_addr: "${dist.master_addr:}"
+    master_port: "${dist.master_port:}"
+    rdzv_conf: timeout=3600
+
+runner:
+  resume: True
+  filter_urls: True
+  ignore_rejected: True
+  training_args:
+    output_dir: "${hydra:runtime.output_dir}"
+    do_train: True
+    deepspeed:
+      train_micro_batch_size_per_gpu: auto
+      gradient_accumulation_steps: auto
+      steps_per_print: 100
+      zero_optimization:
+        stage: 3
+        overlap_comm: true
+        contiguous_gradients: true
+        sub_group_size: 1e9
+        reduce_bucket_size: auto
+        stage3_prefetch_bucket_size: auto
+        stage3_param_persistence_threshold: auto
+        stage3_max_live_parameters: 1e9
+        stage3_max_reuse_distance: 1e9
+        stage3_gather_16bit_weights_on_model_save: true
+      bf16:
+        enabled: True
+    remove_unused_columns: False
+    num_train_epochs: 1
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 2 # global_batch_size=32
+    gradient_checkpointing: True
+    dataloader_num_workers: 0
+    logging_steps: 1
+    tf32: True
+    bf16: True
+    optim: "adamw_torch"
+    learning_rate: 5e-7
+    lr_scheduler_type: "cosine"
+    warmup_ratio: 0.1
+    save_strategy: "no"
+    # DPOConfig
+    beta: 0.1
+    model_init_kwargs:
+      trust_remote_code: True
+      attn_implementation: "flash_attention_2"
+      torch_dtype: "auto"
+      use_cache: False
+    ref_model_init_kwargs: ${runner.training_args.model_init_kwargs}
+    max_length: 2560
+    max_prompt_length: 512
+    dataset_num_proc: 1

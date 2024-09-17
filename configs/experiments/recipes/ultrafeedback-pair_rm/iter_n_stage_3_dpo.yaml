@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - /experiments/stages/stage_dpo
+  - /dataset: LoadShardedDataset
+
+log:
+  experiment_name: ultrafeedback-pair_rm
+
+dataset:
+  dataset_root: "${log.root}/${log.project_name}/${log.experiment_name}/iter${iteration.current:}/pair_rm/preference_dataset"
+
+runner:
+  iteration: "${oc.env:ITERATION,1}"
+  model:
+    model_name: "${log.root}/${log.project_name}/${log.experiment_name}/iter${iteration.last:}/dpo"
+    chat_template: "mistral-instruct"

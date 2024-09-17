@@ -1,0 +1,14 @@
+# @package _global_
+
+defaults:
+  - /experiments/stages/stage_generate_responses
+  - /dataset: LoadUltraFeedbackBinarized
+
+log:
+  experiment_name: ultrafeedback-pair_rm
+
+runner:
+  iteration: "${oc.env:ITERATION,1}"
+  model:
+    model_name: "${log.root}/${log.project_name}/${log.experiment_name}/iter${iteration.last:}/dpo"
+    chat_template: "mistral-instruct"

@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alignment"
+version = "0.1.0"
+description = "LLM Alignment"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+]
+dependencies = [
+    "mm-video[utils_common,utils_language,tools]@git+https://github.com/acherstyx/MM-Video@v0.5.0",
+    "hydra-torchrun-launcher@git+https://github.com/acherstyx/hydra-torchrun-launcher@main",
+    "hydra-dl-launcher@git+https://github.com/acherstyx/hydra-dl-launcher@main",
+    "torch",
+    "transformers>=4.39.0", "peft>=0.6", "trl>=0.9.3", "sentencepiece",
+    "vllm==0.5.3.post1", # TODO: Other version is not well tested, but might be compatible (e.g. 0.4.3, 0.5.5)
+    "deepspeed<=0.14.5",
+    "numpy<2.0.0", # At present, some package is not compatible with numpy 2.0
+    "joblib>=1.3.0",
+    "flash-attn",
+    "scikit-learn",
+    "matplotlib",
+    "lm-format-enforcer", "pydantic",
+    "llm-blender@git+https://github.com/yuchenlin/LLM-Blender.git", # PairRM
+    "tiktoken",
+    "sentence_transformers",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+tools = ["seaborn", "openai>=1.0", "aioprocessing", "tenacity"]
+eval = [
+    "fschat@git+https://github.com/lm-sys/FastChat@e5dc446f54b37adc11eff37b6fc941ab66fbfa00",
+    "anthropic>=0.3", "ray", "openai>=1.0", "alpaca-eval", "plotly"
+]
+
+[project.scripts]
+alignment_run = "alignment.run_train:main"
+
+# Eval: MT-Bench
+alignment_gen_mt_bench_output = "alignment.tools.evaluation.generate_mt_bench_output:main"
+alignment_gen_mt_bench_judgement = "alignment.tools.evaluation.generate_mt_bench_judgment:main"
+alignment_print_mt_bench_score = "alignment.tools.evaluation.print_mt_bench_score:main"
+# Eval: Arena-Hard
+alignment_gen_arena_hard_output = "alignment.tools.evaluation.generate_arena_hard_output:main"
+alignment_gen_arena_hard_judgement = "alignment.tools.evaluation.generate_arena_hard_judgment:main"
+alignment_print_arena_hard_score = "alignment.tools.evaluation.print_arena_hard_score:main"
+# Eval: AlpacaEval
+alignment_gen_alpaca_eval_output = "alignment.tools.evaluation.generate_alpaca_eval_output:main_cli"
+
+alignment_summarize_evaluation = "alignment.tools.evaluation.summarize_evaluation:cli"
+
+[tool.setuptools.packages.find]
+exclude = ["test*", "model_zoo*", "dataset*", "configs*", "scripts*", "tools*"]
+
+[tool.whell]
+exclude = ["test*", "model_zoo*", "dataset*", "configs*", "scripts*", "tools*"]

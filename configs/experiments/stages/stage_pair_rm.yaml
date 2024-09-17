@@ -1,0 +1,19 @@
+# @package _global_
+
+defaults:
+  - /experiments/stages/base
+  - /runner: PairRMStage
+  - override /hydra/launcher: process
+
+hydra:
+  job_logging:
+    handlers:
+      file:
+        filename: "${hydra.runtime.output_dir}/pair_rm_shard_${runner.shard_id}.log"
+
+runner:
+  resume: True
+  shard_id: "${dist.node_rank:}"
+  num_shards: "${dist.nnodes:}"
+  n_instances_per_gpu: 1
+  batch_size: 8

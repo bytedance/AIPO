@@ -1,0 +1,29 @@
+# @package _global_
+
+defaults:
+  - /experiments/stages/base
+  - /runner: GenerateResponsesStage
+  - override /hydra/launcher: process
+
+hydra:
+  job_logging:
+    handlers:
+      file:
+        filename: "${hydra.runtime.output_dir}/generate_responses_shard_${runner.generate.shard_id}.log"
+
+runner:
+  resume: True
+  model:
+    model_init_kwargs:
+      trust_remote_code: True
+      attn_implementation: "flash_attention_2"
+      torch_dtype: "bfloat16"
+      use_cache: False
+  generate:
+    temperature: 0.4
+    top_p: 1.0
+    max_new_tokens: 2048
+    tensor_parallel: 1
+    shard_id: "${dist.node_rank:}"
+    num_shards: "${dist.nnodes:}"
+    n_candidates: 5

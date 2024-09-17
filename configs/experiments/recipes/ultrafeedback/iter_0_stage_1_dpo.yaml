@@ -1,0 +1,13 @@
+# @package _global_
+defaults:
+  - /experiments/stages/stage_dpo
+  - /dataset: LoadUltraFeedbackBinarized
+
+log:
+  experiment_name: ultrafeedback
+
+runner:
+  iteration: 0
+  model:
+    model_name: "mistralai/Mistral-7B-Instruct-v0.2"
+    chat_template: "mistral-instruct"

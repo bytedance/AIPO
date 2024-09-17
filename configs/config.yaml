@@ -1,0 +1,17 @@
+defaults:
+  - mm_video_template
+  - mm_video_default_log
+  - override /hydra/sweeper: enhanced
+  - _self_
+
+log:
+  project_name: AIPO
+
+hydra:
+  verbose:
+    - mm_video
+    - alignment
+    - transformers
+    - datasets
+    - peft
+    - trl

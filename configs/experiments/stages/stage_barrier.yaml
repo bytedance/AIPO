@@ -1,0 +1,19 @@
+# @package _global_
+
+defaults:
+  - /experiments/stages/base
+  - /runner: BarrierStage
+  - override /hydra/launcher: torchrun
+
+hydra:
+  launcher:
+    nproc_per_node: "${dist.nproc_per_node:}"
+    nnodes: "${dist.nnodes:}"
+    node_rank: "${dist.node_rank:}"
+    master_addr: "${dist.master_addr:}"
+    master_port: "${dist.master_port:}"
+    rdzv_conf: timeout=3600
+
+runner:
+  iteration: 0
+  init_process_group: True

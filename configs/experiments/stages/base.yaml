@@ -1,0 +1,10 @@
+# @package _global_
+
+hydra:
+  sweep:
+    dir: "${log.root}/${log.project_name}/${log.experiment_name}"
+    # Using ${runner.iteration} and ${runner.stage} to store configs into difference directory.
+    subdir: "iter${runner.iteration}/${runner.stage}"
+
+log:
+  experiment_name: alignment

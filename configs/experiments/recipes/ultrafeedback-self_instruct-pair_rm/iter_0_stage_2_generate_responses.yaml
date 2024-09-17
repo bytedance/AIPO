@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+  - /experiments/stages/stage_generate_responses
+  - /dataset: LoadShardedDataset
+
+log:
+  experiment_name: ultrafeedback-self_instruct-pair_rm
+
+dataset:
+  dataset_root: "${log.root}/${log.project_name}/${log.experiment_name}/iter0/self_instruct/self_instruct"
+
+runner:
+  iteration: 0
+  model:
+    model_name: "mistralai/Mistral-7B-Instruct-v0.2"
+    chat_template: "mistral-instruct"

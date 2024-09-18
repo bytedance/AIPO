@@ -290,6 +290,21 @@ class CustomizedDPOTrainer(DPOTrainer):
         else:
             raise ValueError(f"Unknown loss type: {self.loss_type}.")
 
+        chosen_rewards = (
+                self.beta
+                * (
+                        policy_chosen_logps.to(self.accelerator.device) - reference_chosen_logps.to(
+                    self.accelerator.device)
+                ).detach()
+        )
+        rejected_rewards = (
+                self.beta
+                * (
+                        policy_rejected_logps.to(self.accelerator.device)
+                        - reference_rejected_logps.to(self.accelerator.device)
+                ).detach()
+        )
+
         # >>>>> Modification: add policy_margin and reference_margin as metric >>>>>
         policy_margin = (
                 self.beta

@@ -26,17 +26,12 @@ from trl import DPOTrainer, DPOConfig
 logger = logging.getLogger(__name__)
 
 
-
-
 @dataclass
 class CustomizedDPOConfig(DPOConfig):
     # Hyperparameters
     alpha: Optional[float] = None
-    alpha1: Optional[float] = None
-    alpha2: Optional[float] = None
     lambda_: Optional[float] = None
-    lambda1: Optional[float] = None
-    lambda2: Optional[float] = None
+
     gamma: Optional[float] = None
 
 
@@ -58,11 +53,7 @@ class CustomizedDPOTrainer(DPOTrainer):
 
         # Hyperparameters
         self.alpha = args.alpha
-        self.alpha1 = args.alpha1
-        self.alpha2 = args.alpha2
         self.lambda_ = args.lambda_
-        self.lambda1 = args.lambda1
-        self.lambda2 = args.lambda2
 
         # Set a default value for gamma
         if args.gamma is None:
@@ -227,7 +218,7 @@ class CustomizedDPOTrainer(DPOTrainer):
         # We ignore the reference model as beta -> 0. The label_smoothing parameter encodes our uncertainty about the labels and
         # calculates a conservative DPO loss.
         # >>>>> Modification: Add new loss type >>>>>
-        if self.loss_type == "sigmoid" or self.loss_type in ["simpo", "alpha_dpo", "aipo"]:
+        if self.loss_type == "sigmoid" or self.loss_type in ["simpo", "alpha_dpo"]:
             losses = (
                     -F.logsigmoid(self.beta * logits) * (1 - self.label_smoothing)
                     - F.logsigmoid(-self.beta * logits) * self.label_smoothing

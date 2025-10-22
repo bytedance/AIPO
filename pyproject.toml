@@ -18,7 +18,7 @@ dependencies = [
     "hydra-dl-launcher@git+https://github.com/acherstyx/hydra-dl-launcher@main",
     "torch",
     "transformers>=4.39.0", "peft>=0.6", "trl>=0.9.3", "sentencepiece",
-    "vllm==0.5.3.post1", # TODO: Other version is not well tested, but might be compatible (e.g. 0.4.3, 0.5.5)
+    "vllm==0.11.0", # TODO: Other version is not well tested, but might be compatible (e.g. 0.4.3, 0.5.5)
     "deepspeed<=0.14.5",
     "numpy<2.0.0", # At present, some package is not compatible with numpy 2.0
     "joblib>=1.3.0",
